@@ -6,6 +6,12 @@ class GuidesController < ApplicationController
   end
 
   def create
+    guide = current_user.guides.create(guide_params)
+    if guide.save
+      render json: guide, status: :created
+    else
+      render json: guide.errors, status: :unprocessable_entity
+    end
 
   end
 
@@ -18,6 +24,6 @@ class GuidesController < ApplicationController
 private
 
   def guide_params
-    params.require(:guides).permit(:name)
+    params.require(:guide).permit(:name)
   end
 end
