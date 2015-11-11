@@ -14,7 +14,7 @@ class GuidesController < ApplicationController
     end
   end
 
-  #Patch /guides/id
+  #PATCH /guides/id
   def update
     guide = current_user.guides.find(params[:id])
     if guide.update_attributes(guide_params)
@@ -24,7 +24,10 @@ class GuidesController < ApplicationController
     end
   end
 
+  #DELETE /guides/id
   def destroy
+    current_user.guides.find(params[:id]).destroy
+    head :ok
   end
 
 private
