@@ -18,7 +18,7 @@ class GuidesController < ApplicationController
   def update
     guide = current_user.guides.find(params[:id])
     if guide.update_attributes(guide_params)
-      render json: guide, status: :updated
+      render json: guide, status: :accepted
     else
       render json: guide.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class GuidesController < ApplicationController
   #DELETE /guides/id
   def destroy
     current_user.guides.find(params[:id]).destroy
-    head :ok
+    head :no_content
   end
 
 private
