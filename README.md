@@ -1,64 +1,59 @@
+# READ ME
 
-# User authentication
+Study Buddy is a full stack application designed for the user to create a study guide and then be able to test themselves with a quiz.
 
-## Register
+  - [Study Buddy]
+  - [Git Hub Front-End]
+  - [Git Hub Back-End]
 
-```
-curl --include --request POST --header "Content-Type: application/json" -d '{
-  "credentials": {
-    "email": "an@example.email",
-    "password": "an example password",
-    "password_confirmation": "an example password"
-  }
-}' http://localhost:3000/register
-```
+This is a full stack CRUD application written for a project.  This is still a work in progress.
 
-## Login
+### USER STORIES
+- As a user I would like to create a username and password to access my content.
+- As a user I would like to be able to login with previous credentials.
+- As a user I would like to have my saved content loaded once I login.
+- As a user I would like to logout
+- As a user I would like to create a guide
+- As a user I would like to update the name of my guide
+- As a user I would like to delete my guide
+- As a user I would like to be able to see all my guides
+- As a user I would like to be able to add questions and answers to a guide
+- As a user I would like to be able to update my questions and answers in a guide
+- As a user I would like to be able to delete questions and answers from my guide
+- As a user I would like to be able to see my questions in the guide.
+- As a user I would like to be able to take a quiz with my quide
+- As a user I would like to know how I did on my quiz.
 
-```
-curl --request POST --header "Content-Type: application/json" -d '{
-  "credentials": {
-    "email": "an@example.email",
-    "password": "an example password"
-  }
-}' http://localhost:3000/login
-```
 
-## Logout
+### Building the App
 
-```
-curl --request DELETE --header "Authorization: Token token=c017d611187e3350baffc52d35a4df69" http://localhost:3000/logout/1
-```
+I started with planning out the data models that would be used in the back end of the application. It was decided that I would have a table for users, guides, and quizzes.
+I began with writing my models and routes and testing them with curl and postman to ensure the data could be reached.
 
-# Users
+From there I began creating a very raw HTML site and began connecting the database in the back end to the front-end with ajax calls. Once the calls were solidified I began one by one attaching the functionality to a bootstrap template.
 
-## List
+### Tools
+- Ruby on Rails
+- Postman
+- Curl Commands
+- Javascript
+- Ajax
+- Bootstrap
+- HTML
+- CSS
+- Jquery
+- Handlebars
 
-```
-curl --header "Authorization: Token token=c017d611187e3350baffc52d35a4df69" http://localhost:3000/users
-```
+### Struggles
+- Storing hidden ID data in handlebars and accessing the hidden data.
+- Using click handlers on elements that were not present during document ready. (Handlebars elements)
+- Scaling back and applying what was needed for the project. I caught myself thinking ahead of myself often.
 
-# Books
+### Future additions
+I would like to be able to add in the question and answer creation. Then taking the stored data and setting up a randomized quiz based on guide questions. Creating a small game out of the quiz to help show where a user may be struggling and to make it fun to study.
 
-## List
 
-```
-curl --header "Authorization: Token token=c017d611187e3350baffc52d35a4df69" http://localhost:3000/users
-```
+   [Study Buddy]: <http://gotwilk890.github.io/Trivia-Front-End/>
+   [Git Hub Front-End]: <https://github.com/gotwilk890/Trivia-Front-End>
+   [Git Hub Back-End]: <https://github.com/gotwilk890/Trivia-Back-End>
 
-**OR**
-
-```
-curl http://localhost:3000/users
-```
-
-## Create
-
-```
-curl --request POST --header "Authorization: Token token=be249dc0231396806f24c953cafae03a" --header "Content-Type: application/json" -d '{
-  "book": {
-    "title":"The Hold",
-    "isbn":"abc123def456"
-  }
-}'  http://localhost:3000/books
-```
